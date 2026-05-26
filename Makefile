@@ -1,6 +1,8 @@
 # ==============================================================
 # Makefile — ZeroGravity Spacecraft Monitor
-# Platform : FreeRTOS POSIX Simulator (macOS / Linux GCC)
+#
+# ── macOS / Linux (this file) ──────────────────────────────
+# Platform : FreeRTOS POSIX Simulator, GCC
 # Build    : gcc -lpthread -lm
 #
 # Usage:
@@ -11,6 +13,29 @@
 # Requires FreeRTOS-Kernel cloned into ./FreeRTOS/
 #   git clone --depth 1 \
 #     https://github.com/FreeRTOS/FreeRTOS-Kernel.git FreeRTOS
+#
+# ── Windows / VS2022 (demo machine) ────────────────────────
+# Platform : FreeRTOS Win32 Simulator port, MSVC
+# Do NOT use this Makefile on Windows — use Visual Studio.
+#
+# Setup steps for VS2022:
+#   1. Open / create a Win32 FreeRTOS demo project in VS2022.
+#      (Start from FreeRTOS\Demo\WIN32-MSVC\ as a template.)
+#   2. Add the following source files to the VS project:
+#        src\main.c
+#        src\task_scheduler.c
+#        src\monitors.c
+#        src\responders.c
+#        src\simulation.c
+#        src\sensor_simulator.c
+#        src\logger.c
+#        src\tasks\watchdog.c
+#   3. Add include\ to Additional Include Directories
+#      (Project → Properties → C/C++ → General).
+#   4. The Win32 port's own FreeRTOSConfig.h is compatible with
+#      ours; use whichever the VS template already provides.
+#      (Our include\FreeRTOSConfig.h has #ifdef _WIN32 guards.)
+#   5. Build → run.  logs\system.log is created automatically.
 # ==============================================================
 
 CC      := gcc

@@ -21,6 +21,11 @@
 #include <stdio.h>
 #include <time.h>
 
+/* M_PI is a POSIX extension; define it ourselves if absent (e.g. MSVC) */
+#ifndef M_PI
+#  define M_PI 3.14159265358979323846
+#endif
+
 /* ----------------------------------------------------------
  * Global sensor state (volatile — read from multiple tasks)
  * ---------------------------------------------------------- */

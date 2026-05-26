@@ -103,8 +103,9 @@ void vApplicationMallocFailedHook(void)
     for (;;);
 }
 
-void vApplicationStackOverflowHook(TaskHandle_t xTask __attribute__((unused)), char *pcTaskName)
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
+    (void)xTask;
     printf("[FATAL] Stack overflow in task: %s\n", pcTaskName);
     for (;;);
 }

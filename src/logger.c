@@ -2,7 +2,7 @@
  * logger.c
  * ZeroGravity — Spacecraft Onboard System Monitoring
  * Author    : Nur (Logging & Watchdog Developer)
- * Platform  : FreeRTOS POSIX Simulator (macOS / Linux GCC)
+ * Platform  : FreeRTOS POSIX Simulator (macOS/GCC) + Win32 Simulator (MSVC)
  *
  * Provides:
  *   - xLogQueue   : tasks send log strings here
@@ -19,6 +19,15 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+
+/* Cross-platform directory creation for the logs/ folder */
+#ifdef _WIN32
+#  include <direct.h>
+#  define MAKE_LOGS_DIR()  _mkdir("logs")
+#else
+#  include <sys/stat.h>
+#  define MAKE_LOGS_DIR()  mkdir("logs", 0755)
+#endif
 
 /* ----------------------------------------------------------
  * Shared handles — extern in logger.h
@@ -42,6 +51,7 @@ void logger_init(void)
     configASSERT(xLogQueue   != NULL);
     configASSERT(xPrintMutex != NULL);
 
+    MAKE_LOGS_DIR();   /* no-op if directory already exists */
     s_log_file = fopen("logs/system.log", "w");
     if (!s_log_file) {
         printf("[Logger] WARNING: could not open logs/system.log\n");
