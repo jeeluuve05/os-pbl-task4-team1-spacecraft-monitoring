@@ -1,3 +1,9 @@
+# FreeRTOS kernel (cloned locally, not committed)
+FreeRTOS/
+
+# Build output
+build/
+
 # Prerequisites
 *.d
 
