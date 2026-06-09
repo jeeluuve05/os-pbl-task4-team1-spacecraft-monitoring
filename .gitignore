@@ -4,6 +4,12 @@ FreeRTOS/
 # Build output
 build/
 
+# Visual Studio metadata
+.vs/
+
+# Runtime log output
+logs/
+
 # Prerequisites
 *.d
 
