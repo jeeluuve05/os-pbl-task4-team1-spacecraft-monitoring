@@ -33,7 +33,7 @@ void vCPUOverloadResponderTask(void *pvParameters)
         {
             printf("[CPUResponder] CPU recovered (%lu%%) — terminating\n", load);
             /* Clear handle before self-delete */
-            xLowMemoryResponderHandle = NULL;
+            xCPUResponderHandle = NULL;
             vTaskDelete(NULL);
         }
 
