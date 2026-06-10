@@ -43,7 +43,7 @@
 #define THRESH_CPU_CRITICAL_PCT        80   /* % — spawn responder above this  */
 #define THRESH_HEAP_CRITICAL_PCT       20   /* % — spawn responder below this  */
 #define THRESH_STACK_WARN_PCT          15   /* % — log warning below this      */
-#define THRESH_BATTERY_CRITICAL_V     330   /* mV (3.30V)                      */
+#define THRESH_BATTERY_CRITICAL_V    3300   /* mV (3.30V)                      */
 #define THRESH_TEMP_CRITICAL_C         80   /* °C                              */
 #define THRESH_COMM_TIMEOUT_MS        3000  /* ms — spawn responder above this */
 
